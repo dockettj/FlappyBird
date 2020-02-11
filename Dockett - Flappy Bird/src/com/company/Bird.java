@@ -25,8 +25,9 @@ public class Bird {
         x = 100;
         y = 150;
         yvel = 0;
-        width = 45;
-        height = 32;
+        width = 35;
+        height = 25;
+        // 2-1 Change gravity between 0 and 1. (Default: 0.5)
         gravity = 0.5;
         jumpDelay = 0;
         rotation = 0.0;
@@ -40,8 +41,9 @@ public class Bird {
 
         if (jumpDelay > 0)
             jumpDelay--;
-
-        if (!dead && keyboard.isDown(KeyEvent.VK_SPACE) && jumpDelay <= 0) {
+        // 2-2:     Add the next line between "))" to allow for players to jump using space.
+        //           || keyboard.isDown(KeyEvent.VK_SPACE)
+        if (!dead && (keyboard.isDown(KeyEvent.VK_UP)) && jumpDelay <= 0) {
             yvel = -10;
             jumpDelay = 10;
         }
@@ -55,6 +57,10 @@ public class Bird {
         r.y = y;
 
         if (image == null) {
+            // 5-1:     Change "lib/background.png" to change the background image.
+            //          Options: "lib/bird.png"
+            //                   "lib/brown-bird.png"
+            //                   "lib/dragon.png"
             image = Util.loadImage("lib/bird.png");
         }
         r.image = image;

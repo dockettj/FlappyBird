@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class Game {
 
+    // 1-1:     Change the pipe delay. (default: 100)
+    //          Lower = closer together
+    //          Higher = farther apart
     public static final int PIPE_DELAY = 100;
 
     private Boolean paused;
@@ -62,9 +65,16 @@ public class Game {
 
     public ArrayList<Render> getRenders() {
         ArrayList<Render> renders = new ArrayList<Render>();
+        // 4-1:     Change "lib/background.png" to change the background image.
+        //          Options: lib/background.png
+        //                   lib/mountain-background.png
+        //                   lib/trees-background.png
         renders.add(new Render(0, 0, "lib/background.png"));
         for (Pipe pipe : pipes)
             renders.add(pipe.getRender());
+        // 4-2:     Change "lib/foreground.png" to change the foreground image.
+        //          Options: lib/foreground.png
+        //                   lib/lava-foreground.png
         renders.add(new Render(0, 0, "lib/foreground.png"));
         renders.add(bird.getRender());
         return renders;
@@ -99,7 +109,8 @@ public class Game {
 
     private void movePipes() {
         pipeDelay--;
-
+        //  3-1:    Increase Score every tick
+        //          add "score++;" in this area and your score will skyrocket
         if (pipeDelay < 0) {
             pipeDelay = PIPE_DELAY;
             Pipe northPipe = null;
@@ -132,7 +143,9 @@ public class Game {
             } else {
                 southPipe.reset();
             }
-
+            // 1-2:     Change the distance between pipes. (Default: 175)
+            //          0 = No gap
+            //          300 = Pipes almost not visible anymore
             northPipe.y = southPipe.y + southPipe.height + 175;
         }
 

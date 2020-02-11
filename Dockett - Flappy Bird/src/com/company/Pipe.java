@@ -54,6 +54,9 @@ public class Pipe {
         r.y = y;
 
         if (image == null) {
+            // 6-1:     Change "lib/pipe-" + orientation + ".png" to change the pipe.
+            //          Options: lib/red-pipe
+            //                   lib/lava-pipe
             image = Util.loadImage("lib/pipe-" + orientation + ".png");
         }
         r.image = image;
